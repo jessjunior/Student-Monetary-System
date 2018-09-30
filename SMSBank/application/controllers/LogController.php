@@ -14,9 +14,4 @@ class LogController extends CI_Controller {
 		$data['datatable']=$this->loadscripts->datatable();
 		$this->load->view('showlog',$data);
 	}
-
-	public function db_transaction_log($source,$transaction,$amount){
-		$this->load->model('getlog');
-		return $this->getlog->log_transaction($source,$transaction,$amount);
-	}
 }
