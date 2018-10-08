@@ -16,7 +16,7 @@ class VerifyStaff extends CI_Model {
 	public function get_unique($staff_id){
 		$this->db->select('*');
 		$this->db->from('staff');
-		$this->db->where("staff_id=$staff_id and deleted=0");
+		$this->db->where("staff_id='$staff_id' and deleted=0");
 		return $this->db->get()->row();
 	}
 
