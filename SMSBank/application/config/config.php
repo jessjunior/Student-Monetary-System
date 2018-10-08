@@ -24,7 +24,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/HTML/Student-Monetary-System/SMSBank/';
-//$config['base_url'] = 'https://SMSBank.herokuapp.com/';
 
 /*
 |--------------------------------------------------------------------------
