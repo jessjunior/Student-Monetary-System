@@ -3,23 +3,20 @@
 class Deposit_Withdraw_Model extends CI_Model {
         
     public function __construct() {
-    	$this->load->database($db);
+        parent::__construct();
     }
 
-    public function user_data($accountNumber)
-    {
-    	if ($ != FALSE) {
-    	$query = $this->db->get_where('users' , array('accountNumber' => $accountNumber));
-    	return $query->row_array();
-    	}
-    	else{
-    		return FALSE;
-    	}
+    private function update_userdata($amount,$accountNumber){
+    	return $this->db->set('Balance',$amount)->where('acc_no',$accountNumber)->update('accounts');
     }
 
-    public function update_userdata($amount)
-    {
-    	$this->db->set('balance',$amount);
-    	$this->db->insert('users');
+    private function get_userdata($accountNumber){
+        return $this->db->select('Balance')->where('acc_no',$accountNumber)->get('accounts')->row()->Balance;
     }
+
+    public function deposit($amount,$accountNumber){}
+
+    public function withdraw($amount,$accountNumber){}
+
+    public function transfer($amount,$to,$from){}
 }

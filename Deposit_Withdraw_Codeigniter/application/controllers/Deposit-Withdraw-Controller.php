@@ -1,17 +1,17 @@
 <?php
 
 class Deposit_Withdraw_Controller extends CI_Controller {
-    
-    private $accountNumber = $_SESSION['verify']['accountNumber'] ;
-    private $balance = $_SESSION['verify']['balance'];
 
-    public function SMS_deposit($amount)
-    {
-        $this->load->model('Deposit_Withdraw_Model');
-    	$this->$balance+=$amount;
+    public function SMS_deposit(){
+        $this->load->model('deposit_withdraw_model');
+    	$success=$this->deposit_withdraw_model->deposit($_POST['amount'],$this->session->userdata('accountnumber'));
+        if($success){
+
+        }else{
+            
+        }
     }
-    public function SMS_withdraw($amount)
-    {
+    public function SMS_withdraw(){
     	if ($amount > $this->$balance) {
     		echo "You have insufficient Balance ".$balance."Please deposit more money.";
     	}else{
