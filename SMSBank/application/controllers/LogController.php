@@ -8,6 +8,9 @@ class LogController extends CI_Controller {
 	}
 
 	public function index(){
+		if($this->session->userdata('accountnumber')===null){
+			redirect(base_url(),"location");
+		}
 		$this->load->model('getlog');
 		$data['t_log']=$this->getlog->index();
 		$data['links']=$this->loadscripts->index();
@@ -24,6 +27,7 @@ class LogController extends CI_Controller {
 			$this->load->view('show_unique_log',$data);
 			return;
 		}
-		redirect("","location");
+		redirect(base_url(),"location");
 	}
 }
+?>
