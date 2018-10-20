@@ -15,12 +15,16 @@ class Deposit_Withdraw_Model extends CI_Model {
     }
 
     public function deposit($amount,$accountNumber){
+        $this->db->get_userdata($accountNumber);
         $this->$amount += $balance;
+        $this->update_userdata($amount,$accountNumber);
         return $amount;
     }
 
     public function withdraw($amount,$accountNumber){
+        $this->db->get_userdata($accountNumber);
         $this->$amount -= $balance;
+        $this->update_userdata($amount,$accountNumber);
         return $amount;
     }
 
