@@ -30,17 +30,17 @@ class VerifyStaff extends CI_Model {
 
 	public function update_staff_name($staff_id,$new_name){
 		$data=array("staff_name"=>"$new_name");
-		return $this->db->set($data)->where("staff_id=$staff_id")->update("staff",$data,1);
+		return $this->db->set($data)->where("staff_id",$staff_id)->update("staff");
 	}
 
 	public function update_staff_pass($staff_id,$new_pass){
 		$data=array("Pass"=>"$new_pass");
-		return $this->db->set($data)->where("staff_id=$staff_id")->update("staff",$data,1);
+		return $this->db->set($data)->where("staff_id",$staff_id)->update("staff");
 	}
 
 	public function delete_staff($staff_id){
 		$data=array("deleted"=>1);
-		return $this->db->set($data)->where("staff_id=$staff_id")->update("staff",$data,1);
+		return $this->db->set($data)->where("staff_id",$staff_id)->update("staff");
 	}
 }
 ?>
