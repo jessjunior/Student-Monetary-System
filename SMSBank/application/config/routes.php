@@ -54,3 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['transaction_log']= 'logcontroller';
 $route['transaction_log/get_log']= 'logcontroller/get_unique_log';
+$route['deposit']='transcontroller/deposit';
+$route['withdraw']='transcontroller/withdraw';
+$route['transfer']='transcontroller';
