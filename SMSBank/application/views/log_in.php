@@ -31,9 +31,107 @@
 			</div>
 			<input class="btn btn-secondary mb-3" type ="submit" value="LOGIN">
 		</form>
-		<a class="text-info" href ="">FORGOT PASSWORD</a><br>
-		<a class="text-info" href ="">CREATE ACCOUNT</a>
-	</div>	
+		<a class="text-info" data-toggle="modal" href ="#forgotPin">FORGOT PIN</a><br>
+		<a class="text-info" data-toggle="modal" href ="#signUp">CREATE ACCOUNT</a>
+	</div>
+
+	<div class="modal fade" id="forgotPin">
+		<div class="modal-dialog">
+		  	<div class="modal-content">
+		      	<div class="modal-header">
+				  	<h4 class="modal-title">Change Password</h4>
+				  	<button type="button" class="close" data-dismiss="modal">&times;</button>
+			  	</div>
+			  	<form method="post" enctype="multipart/form-data" action="<?php echo base_url()?>main/reset_password.html">
+			      	<div class="modal-body">
+			      		For your password to be reset, you have to provide your Account number to verify your identity.
+				        <input class="form-control" type="text" name="acc_no" placeholder="Account No" required="">
+				  	</div>
+				    <div class="modal-footer">
+				    	<button type="submit" class="close">Reset Pin</button>
+				    </div>
+			    </form>
+		    </div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="signUp">
+		<div class="modal-dialog" style="min-width: 70%;">
+			<div class="modal-content" style="background-image: linear-gradient(-270deg,whitesmoke 10%,ghostwhite 90%);">
+				<div class="modal-header">
+					<div class="modal-title" style="font-size: 18px;">Sign Up</div>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<form style="width: 100%;" method="post" enctype="multipart/form-data">
+					<div class="row modal-body" style="padding: 25px;box-sizing: border-box;width: 100%;">
+						<div class="col-lg-6">
+							<div class="form-group">
+								<div class="input-group mb-4">
+									<input type="text" class="form-control" name="user" id="user" placeholder="Account Number" required="">
+								    <div class="input-group-append">
+								      	<span class="input-group-text fa" id="1"></span>
+								    </div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group mb-4">
+									<input type="text" class="form-control" name="name" id="name" placeholder="Full Name" required="">
+								    <div class="input-group-append">
+								      	<span class="input-group-text fa" id="2"></span>
+								    </div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group mb-4">
+									<div class="input-group-prepend">
+								      	<span class="input-group-text" id="showSecret" style="cursor: pointer;"><img src="<?php echo base_url();?>/resources/show_password_icon.png" style="width: 23px;height: 23px;"></span>
+								    </div>
+									<input type="password" class="form-control" name="secret" id="secret" placeholder="Password" required="">
+								    <div class="input-group-append">
+								      	<span class="input-group-text fa" id="3"></span>
+								    </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+								<div class="input-group mb-4">
+									<div class="input-group-prepend">
+								      	<span class="input-group-text" id="showSecretRe" style="cursor: pointer;"><img src="<?php echo base_url();?>/resources/show_password_icon.png" style="width: 23px;height: 23px;"></span>
+								    </div>
+									<input type="password" class="form-control" name="secretRe" id="secretRe" placeholder="Repeat Password" required="">
+								    <div class="input-group-append">
+								      	<span class="input-group-text fa" id="4"></span>
+								    </div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group mb-4">
+									<input type="text" class="form-control" name="deposit" id="deposit" placeholder="Initial Deposit" required="">
+								    <div class="input-group-append">
+								      	<span class="input-group-text fa" id="5"></span>
+								    </div>
+								</div>
+							</div>
+							<div class="form-group input-group">
+								<div class="input-group-prepend">
+								   	<span class="input-group-text">Type</span>
+								</div>
+								<select class="custom-select" name="type" id="type" style="cursor: pointer;" required="">
+									<option>Personal</option>
+									<option>Business</option>
+									<option>Other</option>
+								</select>
+							</div><br>
+						</div>
+					</div>
+					<div class="form-group mb-3 modal-footer">
+						<button type="submit" class="close">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>
