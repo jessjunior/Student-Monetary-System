@@ -9,7 +9,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<?php echo $datatable;?>
 </head>
 <body>
-	<div class="container mb-5" style="position: relative;top: 100px">
+	<?php echo $nav;?>
+	<script>$("a[href='<?php echo site_url('transaction_log')?>']").addClass("active")</script>
+	<div class="container mb-5" style="position: relative;top: 60px">
 		<div class="text-muted display-4 mb-4">Transaction Log - All Transactions</div>
 		<table class="table table-striped table-bordered table-hover" style="cursor: pointer;">
 			<caption>All transactions made in SMS Bank.</caption>
