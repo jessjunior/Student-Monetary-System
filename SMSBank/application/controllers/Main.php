@@ -51,4 +51,28 @@ class Main extends CI_Controller {
 			$this->session->set_flashdata('log',"<div class='container'><div class='container alert alert-danger'>Password not changed.</div></div>");
 		redirect(base_url(),"location");
 	}
+
+	public function sign_up(){
+		$this->load->model('verifyusers');
+		if((int)$_POST['secret']<1000||(int)$_POST['secret']>9999){
+			$this->session->set_flashdata('log',"<div class='container'><div class='container alert alert-warning'>Password is of incorrect format. It has to be a 4 digit number greater than 1000 and less than 9999</div></div>");
+			redirect(base_url(),"location");
+		}
+		if((int)$_POST['deposit']<1){
+			$this->session->set_flashdata('log',"<div class='container'><div class='container alert alert-warning'>Initial Deposit is not a number.</div></div>");
+			redirect(base_url(),"location");
+		}
+		if($_POST['secret']===$_POST['secretRe']){
+			$acc_no=$this->verifyusers->add_acc($_POST['name'],$_POST['type'],$_POST['deposit'],$_POST['secret']);
+			if($acc_no){
+				$this->session->set_flashdata('log',"<div class='container'><div class='container alert alert-success'>New Account Created. Account Number is $acc_no.</div></div>");
+			}else{
+				$this->session->set_flashdata('log',"<div class='container'><div class='container alert alert-danger'>An error occurred and account was not created.</div></div>");
+			}
+		}else{
+			$this->session->set_flashdata('log',"<div class='container'><div class='container alert alert-warning'>Passwords don't match</div></div>");
+		}
+		redirect(base_url(),"location");
+
+	}
 }

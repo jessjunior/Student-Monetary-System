@@ -20,12 +20,15 @@ class VerifyUsers extends CI_Model {
 		return $this->db->get()->row();
 	}
 
-	public function add_acc($acc_no,$name,$type,$balance,$pass){
+	public function add_acc($name,$type,$balance,$pass){
 		$this->db->select('max(Acc_No) as maxID');
 		$this->db->from('accounts');
-		$staffID=$this->db->get()->row()->maxID+1;
+		$acc_no=$this->db->get()->row()->maxID+1;
 		$data=array('Acc_No'=>$acc_no,'Name'=>$name,'Type'=>$type,'Balance'=>$balance,'Pin'=>$pass);
-		return $this->db->insert("accounts",$data,true);
+		if($this->db->insert("accounts",$data,true)){
+			return $acc_no;
+		}
+		return false;
 	}
 
 	public function update_account_name($acc_no,$new_name){
