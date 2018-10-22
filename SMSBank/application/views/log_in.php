@@ -26,8 +26,11 @@
 		    <div class="form-group mb-3">
 				<input type ="text" class="form-control" name='acc' placeholder="Account No" required="">
 		    </div>
-		    <div class="form-group mb-3">
-				<input type ="password" class="form-control" name='pass' placeholder="Password" required="">
+		    <div class="form-group input-group mb-3">
+		    	<div class="input-group-prepend">
+			      	<span class="input-group-text" id="show" style="cursor: pointer;"><img src="<?php echo base_url();?>/resources/show_password_icon.png" style="width: 23px;height: 23px;"></span>
+			    </div>
+				<input type ="password" class="form-control" name='pass' id='pass' placeholder="Password" required="">
 			</div>
 			<input class="btn btn-secondary mb-3" type ="submit" value="LOGIN">
 		</form>
@@ -62,23 +65,12 @@
 					<div class="modal-title" style="font-size: 18px;">Sign Up</div>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
-				<form style="width: 100%;" method="post" enctype="multipart/form-data">
+				<form style="width: 100%;" method="post" enctype="multipart/form-data" action="<?php echo site_url('main/sign_up')?>">
 					<div class="row modal-body" style="padding: 25px;box-sizing: border-box;width: 100%;">
 						<div class="col-lg-6">
 							<div class="form-group">
 								<div class="input-group mb-4">
-									<input type="text" class="form-control" name="user" id="user" placeholder="Account Number" required="">
-								    <div class="input-group-append">
-								      	<span class="input-group-text fa" id="1"></span>
-								    </div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="input-group mb-4">
 									<input type="text" class="form-control" name="name" id="name" placeholder="Full Name" required="">
-								    <div class="input-group-append">
-								      	<span class="input-group-text fa" id="2"></span>
-								    </div>
 								</div>
 							</div>
 							<div class="form-group">
@@ -87,30 +79,21 @@
 								      	<span class="input-group-text" id="showSecret" style="cursor: pointer;"><img src="<?php echo base_url();?>/resources/show_password_icon.png" style="width: 23px;height: 23px;"></span>
 								    </div>
 									<input type="password" class="form-control" name="secret" id="secret" placeholder="Password" required="">
-								    <div class="input-group-append">
-								      	<span class="input-group-text fa" id="3"></span>
-								    </div>
 								</div>
 							</div>
-						</div>
-						<div class="col-lg-6">
 							<div class="form-group">
 								<div class="input-group mb-4">
 									<div class="input-group-prepend">
 								      	<span class="input-group-text" id="showSecretRe" style="cursor: pointer;"><img src="<?php echo base_url();?>/resources/show_password_icon.png" style="width: 23px;height: 23px;"></span>
 								    </div>
 									<input type="password" class="form-control" name="secretRe" id="secretRe" placeholder="Repeat Password" required="">
-								    <div class="input-group-append">
-								      	<span class="input-group-text fa" id="4"></span>
-								    </div>
 								</div>
 							</div>
+						</div>
+						<div class="col-lg-6">
 							<div class="form-group">
 								<div class="input-group mb-4">
 									<input type="text" class="form-control" name="deposit" id="deposit" placeholder="Initial Deposit" required="">
-								    <div class="input-group-append">
-								      	<span class="input-group-text fa" id="5"></span>
-								    </div>
 								</div>
 							</div>
 							<div class="form-group input-group">
@@ -134,4 +117,20 @@
 	</div>
 </div>
 </body>
+<script>
+	function showPassword(event){
+		var type=$(event.data.input).attr("type")
+		if(type.localeCompare("password")===0){
+			$(event.data.input).attr("type","text")
+			$(event.data.button).addClass("bg-secondary")
+		}else{
+			$(event.data.input).attr("type","password")
+			$(event.data.button).removeClass("bg-secondary")
+		}
+	}
+
+	$("#show").click({button: "#show", input: "#pass"},showPassword)
+	$("#showSecret").click({button: "#showSecret", input: "#secret"},showPassword)
+	$("#showSecretRe").click({button: "#showSecretRe", input: "#secretRe"},showPassword)
+</script>
 </html>
