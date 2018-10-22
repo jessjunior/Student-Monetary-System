@@ -60,7 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<button class="btn btn-success" data-toggle='modal' data-target='#withdraw'>Withdraw</button>
 				<button class="btn btn-success" data-toggle='modal' data-target='#transfer'>Transfer</button>
 			</div>
-			<button class="btn btn-danger w-100">Change Account Information</button>
+			<button class="btn btn-danger w-100" onclick="location.assign('<?php echo base_url()?>change.html')">Change Account Information</button>
 		</div>
 	</div>
 
@@ -82,6 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		    </div>
 		</div>
 	</div>
+
 	<div class="modal fade" id="withdraw">
 		<div class="modal-dialog">
 		  	<div class="modal-content">
@@ -100,6 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		    </div>
 		</div>
 	</div>
+
 	<div class="modal fade" id="transfer">
 		<div class="modal-dialog">
 		  	<div class="modal-content">
@@ -119,5 +121,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		    </div>
 		</div>
 	</div>
+
 </body>
 </html>
